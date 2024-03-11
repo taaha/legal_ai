@@ -1,0 +1,17 @@
+altair
+langchain
+llama-index
+streamlit
+transformers
+python-dotenv
+chromadb
+llama-index-vector-stores-chroma
+llama-index-embeddings-huggingface
+sentence-transformers
+pydantic==1.10.11
+wandb
+llama-index-callbacks-wandb
+llama-index-llms-openai
+llama-index-llms-ollama
+llama-index-vector-stores-qdrant
+qdrant_client
