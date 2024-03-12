@@ -13,3 +13,5 @@ baseline RAG testing passed. embeddings text-003. gpt3.5
 Opensource mistral + opensouirce embeddings = CUDA OOM
 
 ### v1
+
+Control over metadata.
