@@ -21,3 +21,11 @@ Ingestion to include
 - detail extraction (legal issues, facts, arguments)
 - pointer detail extraction
 All is saved in CSV
+
+Bugs to resolve
+- Chat and then move to other page. Then move back to Chat page. messages persist but Chatting with changes
+
+Search by prompting
+
+### v2
+Abort

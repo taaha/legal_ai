@@ -3,6 +3,9 @@ from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core.vector_stores.types import MetadataFilters, ExactMatchFilter
+from llama_index.core.retrievers import VectorIndexRetriever
+from llama_index.core.query_engine import RetrieverQueryEngine
+from llama_index.core.postprocessor import SimilarityPostprocessor
 from llama_index.core import Settings
 import chromadb
 import openai
@@ -40,5 +43,28 @@ class ragger():
         # self.chat_engine = self.index.as_chat_engine(chat_mode="condense_question", verbose=True, filters=filters)
         # response = self.chat_engine.chat(prompt)
         response = query_engine.query(prompt)
-        print(response.source_nodes)
+        # print(response.source_nodes)
         return response.response
+    
+    def find_relevant_files_from_prompt(self, prompt):
+        # configure retriever
+        retriever = VectorIndexRetriever(
+            index=self.index,
+            similarity_top_k=2,
+            # similarity_cutoff=0.5
+        )
+        node_postprocessors = [
+        SimilarityPostprocessor(similarity_cutoff=0.5)
+        ]
+        query_engine = RetrieverQueryEngine.from_args(
+            retriever, node_postprocessors=node_postprocessors, response_mode="no_text"
+        )
+        response = query_engine.query(prompt)
+
+        file_names = set()
+        for source_node in response.source_nodes:
+            file_names.add(source_node.metadata['pdf_name'])
+        return list(file_names)
+    
+    def find_relevant_files_from_input_file(self, filepath):
+        pass
