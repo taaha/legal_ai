@@ -12,3 +12,4 @@ wandb
 llama-index-callbacks-wandb
 llama-index-llms-openai
 matplotlib
+streamlit-card

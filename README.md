@@ -14,4 +14,10 @@ Opensource mistral + opensouirce embeddings = CUDA OOM
 
 ### v1
 
-Control over metadata.
+Control over metadata. Filtered metadata queries. Search and Chat with single document in streamlit
+
+Ingestion to include
+- metadata reformation
+- detail extraction (legal issues, facts, arguments)
+- pointer detail extraction
+All is saved in CSV
