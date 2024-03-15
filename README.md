@@ -25,7 +25,8 @@ All is saved in CSV
 Bugs to resolve
 - Chat and then move to other page. Then move back to Chat page. messages persist but Chatting with changes
 
-Search by prompting
+Search by prompting and file
+three page working app completed
 
 ### v2
 Abort

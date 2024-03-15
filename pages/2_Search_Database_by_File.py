@@ -12,7 +12,7 @@ st.set_page_config(
 
 ragger = ragger()
 
-df = pd.read_csv('metadata_doc4_gpt003s_0_detailed.csv')
+df = pd.read_csv('metadata_doc44_gpt003s_0_detailed.csv')
 
 st.write("# Search Database by File")
 

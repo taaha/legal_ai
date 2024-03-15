@@ -22,7 +22,7 @@ class ragger():
         Settings.embed_model = OpenAIEmbedding()
 
     def create_db_link(self):
-        db2 = chromadb.PersistentClient(path="./chroma_db_doc4_gpt003s_metadata_0")
+        db2 = chromadb.PersistentClient(path="./chroma_db_doc44_gpt003s_metadata_0_c")
         chroma_collection = db2.get_or_create_collection("quickstart")
         vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
         self.index = VectorStoreIndex.from_vector_store(
@@ -38,11 +38,13 @@ class ragger():
         return response.response
     
     def query_single_file_data(self, prompt, pdf_name):
+        # print(pdf_name)
         filters = MetadataFilters(filters=[ExactMatchFilter(key="pdf_name", value=pdf_name)])
         query_engine = self.index.as_query_engine(filters=filters)
         # self.chat_engine = self.index.as_chat_engine(chat_mode="condense_question", verbose=True, filters=filters)
         # response = self.chat_engine.chat(prompt)
         response = query_engine.query(prompt)
+        # print(response.source_nodes)
         # print(response.source_nodes)
         return response.response
     

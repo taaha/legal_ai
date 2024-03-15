@@ -25,7 +25,7 @@ if "chat_document_index" not in st.session_state:
 
 st.write("# Chat with a Case File")
 
-df = pd.read_csv('metadata_doc4_gpt003s_0.csv')
+df = pd.read_csv('metadata_doc44_gpt003s_0.csv')
 
 df_no_duplicates = df.drop_duplicates(subset=['pdf_name'])
 
