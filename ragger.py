@@ -66,5 +66,17 @@ class ragger():
             file_names.add(source_node.metadata['pdf_name'])
         return list(file_names)
     
-    def find_relevant_files_from_input_file(self, filepath):
-        pass
+    def summarise_input_file(self, filepath):
+        documents = SimpleDirectoryReader(
+        input_files=[filepath]
+            ).load_data()
+
+        if len(documents) > 20:
+            documents = documents[:20]
+
+        index = VectorStoreIndex.from_documents(documents)
+        query_engine = index.as_query_engine()
+
+        response = query_engine.query("Summarize this document")
+        
+        return response.response

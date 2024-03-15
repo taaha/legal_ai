@@ -8,8 +8,8 @@ import chromadb
 from ragger import ragger
 
 st.set_page_config(
-    page_title="Chat with documents",
-    page_icon="👋",
+    page_title="Legal AI",
+    page_icon="🤖",
 )
 
 ragger = ragger()
@@ -23,9 +23,7 @@ if "show_chat_interface" not in st.session_state:
 if "chat_document_index" not in st.session_state:
     st.session_state.chat_document_index = 0
 
-st.write("# Chat with document")
-
-st.sidebar.success("Select a demo above.")
+st.write("# Chat with a Case File")
 
 df = pd.read_csv('metadata_doc4_gpt003s_0.csv')
 

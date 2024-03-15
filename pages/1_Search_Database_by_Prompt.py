@@ -3,8 +3,8 @@ import pandas as pd
 from ragger import ragger
 
 st.set_page_config(
-    page_title="Chat with database",
-    page_icon="👋",
+    page_title="Legal AI",
+    page_icon="🤖",
 )
 
 ragger=ragger()
@@ -39,6 +39,7 @@ if prompts_search:
 
     # st.write(legible_file_names)
     # Show the cards
+
     N_cards_per_row = 1
     for n_row, row in enumerate(legible_file_names):
         i = n_row%N_cards_per_row
@@ -62,5 +63,10 @@ if prompts_search:
                 st.write(facts[n_row])
             with st.expander("Arguments"):
                 st.write(arguments[n_row])
-            # chat_buttons.append(st.button("Chat", key=n_row))
-    # st.write("---")
+
+            # st.write(relevant_file_names[n_row])
+            relevancy = ragger.query_single_file_data("How is the document related to the prompt: " + prompts_search, relevant_file_names[n_row])
+            with st.expander("Relevancy"):
+                st.write(relevancy)
+    
+    st.write("---")
